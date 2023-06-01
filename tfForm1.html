@@ -102,6 +102,16 @@
                     $("#email").removeClass("input-vacio");
                 }
 
+                if ($("#password").val() !== $("#password2").val()) {
+                    $("#password2Error2").text("Las contraseñas no coinciden");
+                    $("#password2Error2").show();
+                    $("#password2").addClass("input-vacio");
+                } else {
+                    $("#password2Error2").text("");
+                    $("#password2Error2").hide();
+                    $("#password2").removeClass("input-vacio");
+                }
+
                                                            
                 
             });
@@ -195,7 +205,9 @@
                 <label for="password2">Repetir contraseña:</label>
                 <input type="password" id="password2" name="password2" value=""> </input>
             </li>
-            <span class="error" id="password2Error"></span>            
+            <span class="error" id="password2Error"></span> 
+            <br> 
+            <span class="error" id="password2Error2"></span>            
             <br> 
             <br>
             <class="button">
