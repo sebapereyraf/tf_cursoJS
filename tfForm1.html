@@ -90,8 +90,19 @@
                     $("#password2Error").show  //removeClass("visible");
                     $("#password2").removeClass("input-vacio");
                 }
+             
+                let expresionEmail = /^\S+@\S+\.\S+$/;
+                if (!expresionEmail.test($("#email").val())) {
+                    $("#emailError2").text("Se requiere un email válido");
+                    $("#emailError2").show();
+                    $("#email").addClass("input-vacio");
+                } else {
+                    $("#emailError2").text("");
+                    $("#emailError2").hide();
+                    $("#email").removeClass("input-vacio");
+                }
 
-                              
+                                                           
                 
             });
         });
@@ -149,7 +160,9 @@
                 <label for="email">Correo Electronico:</label>
                 <input type="email" id="email" name="email" value=""> </input>
             </li>
-            <span class="error" id="emailError"></span>            
+            <span class="error" id="emailError"></span>
+            <br>
+            <span class="error" id="emailError2"></span>            
             <br><br>
             <li>
                 <label for="ciudad">Ciudad:</label>
