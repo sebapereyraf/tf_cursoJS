@@ -35,7 +35,63 @@
                     $("#nombreError").show  //removeClass("visible");
                     $("#nombre").removeClass("input-vacio");
                 }
-                
+
+                if ($("#apellido").val()==="") {
+                    $("#apellidoError").text(msjError)            //("Es necesario completar este dato");
+                    $("#apellidoError").hide  //.addClass("visible");
+                    $("#apellido").addClass("input-vacio");
+
+                } else {
+                    $("#apellidoError").text("");
+                    $("#apellidoError").show  //removeClass("visible");
+                    $("#apellido").removeClass("input-vacio");
+                }
+
+                if ($("#email").val()==="") {
+                    $("#emailError").text(msjError)            //("Es necesario completar este dato");
+                    $("#emailError").hide  //.addClass("visible");
+                    $("#email").addClass("input-vacio");
+
+                } else {
+                    $("#emailError").text("");
+                    $("#emailError").show  //removeClass("visible");
+                    $("#email").removeClass("input-vacio");
+                }
+
+                if ($("#usuario").val()==="") {
+                    $("#usuarioError").text(msjError)            //("Es necesario completar este dato");
+                    $("#usuarioError").hide  //.addClass("visible");
+                    $("#usuario").addClass("input-vacio");
+
+                } else {
+                    $("#usuarioError").text("");
+                    $("#usuarioError").show  //removeClass("visible");
+                    $("#usuario").removeClass("input-vacio");
+                }
+
+                if ($("#password").val()==="") {
+                    $("#passwordError").text(msjError)            //("Es necesario completar este dato");
+                    $("#passwordError").hide  //.addClass("visible");
+                    $("#password").addClass("input-vacio");
+
+                } else {
+                    $("#passwordError").text("");
+                    $("#passwordError").show  //removeClass("visible");
+                    $("#password").removeClass("input-vacio");
+                }
+
+                if ($("#password2").val()==="") {
+                    $("#password2Error").text(msjError)            //("Es necesario completar este dato");
+                    $("#password2Error").hide  //.addClass("visible");
+                    $("#password2").addClass("input-vacio");
+
+                } else {
+                    $("#password2Error").text("");
+                    $("#password2Error").show  //removeClass("visible");
+                    $("#password2").removeClass("input-vacio");
+                }
+
+                              
                 
             });
         });
