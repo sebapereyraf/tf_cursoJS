@@ -5,28 +5,96 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .input-vacio {
+            background-color: red;
+        }
+
+                
+    </style>
+
     <script src="jquery-3.7.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#form1").submit(function(event) {
+                event.preventDefault(); // Evitar envío del formulario
+                
+                
+               let msjError="Es necesario completar este dato"
+
+                if ($("#nombre").val()==="") {
+                    $("#nombreError").text(msjError)            //("Es necesario completar este dato");
+                    $("#nombreError").hide  //.addClass("visible");
+                    $("#nombre").addClass("input-vacio");
+
+                } else {
+                    $("#nombreError").text("");
+                    $("#nombreError").show  //removeClass("visible");
+                    $("#nombre").removeClass("input-vacio");
+                }
+                
+                
+            });
+        });
+        
+        
+        /*
+        
+        $(document).ready(function(){
+        $("#form1").submit(function(event){
+            event.preventDefault(); // Evita que el formulario se envie
+
+            if ($("#nombre").val()===""){
+            $("#nombreError").textContent=$("#nombre").label + " es obligatorio"
+            $("#nombreError").classList.add("visible")
+        } else{
+            $("#nombreError").textContent= ""
+            $("#nombreError").classList.remove("visible")
+        }
+                    
+        });
+        }); 
+
+        */
+
+        
+
+
+    </script>
+
+
+
 </head>
 <body>
     <form id="form1">
         <ul>
-            <!-- prueba de cambios-->
             <li>
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" value=""> </input>
             </li>
+            <span class="error" id="nombreError"></span>
+            <br><br>
             <li>
                 <label for="apellido">Apellido:</label>
                 <input type="text" id="apellido" name="apellido" value=""> </input>
             </li>
+            <br>
+            <span class="error" id="apellidoError"></span>            
+            <br>
             <li>
                 <label for="edad">Edad:</label>
                 <input type="number" id="edad" name="edad" value="" min="0" max="120" step="1"> </input>
             </li>
+            <br>
+            <span class="error" id="edadError"></span>            
+            <br>
             <li>
                 <label for="email">Correo Electronico:</label>
                 <input type="email" id="email" name="email" value=""> </input>
             </li>
+            <br>
+            <span class="error" id="emailError"></span>            
+            <br>
             <li>
                 <label for="ciudad">Ciudad:</label>
                 <input type="text" id="ciudad" name="ciudad" value=""> </input>
@@ -43,14 +111,24 @@
                 <label for="usuario">Nombre de usuario:</label>
                 <input type="text" id="usuario" name="usuario" value=""> </input>
             </li>
+            <br>
+            <span class="error" id="usuarioError"></span>            
+            <br>
             <li>
                 <label for="password">Contraseña:</label>
                 <input type="password" id="password" name="password" value=""> </input>
             </li>
+            <br>
+            <span class="error" id="passwordError"></span>            
+            <br>
             <li>
                 <label for="password2">Repetir contraseña:</label>
                 <input type="password" id="password2" name="password2" value=""> </input>
-            </li> <br>
+            </li>
+            <br>
+            <span class="error" id="password2Error"></span>            
+            <br> 
+            <br>
             <class="button">
                 <button type="submit">Envíe formulario</button>
                         
