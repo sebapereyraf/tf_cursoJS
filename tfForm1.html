@@ -27,12 +27,12 @@
 
                 if ($("#nombre").val()==="") {
                     $("#nombreError").text(msjError)            //("Es necesario completar este dato");
-                    $("#nombreError").hide  //.addClass("visible");
+                    $("#nombreError").show  //.addClass("visible");
                     $("#nombre").addClass("input-vacio");
 
                 } else {
                     $("#nombreError").text("");
-                    $("#nombreError").show  //removeClass("visible");
+                    $("#nombreError").hide  //removeClass("visible");
                     $("#nombre").removeClass("input-vacio");
                 }
 
