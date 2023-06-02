@@ -112,9 +112,28 @@
                     $("#password2").removeClass("input-vacio");
                 }
 
-                                                           
-                
             });
+
+            $.ajax({
+                url: "https://restcountries.com/v3.1/all",
+                method: "GET",
+                datatype: "json",
+                succes: function(data){
+                    $("#paisesError").hide();
+
+                    for (var i=0; i<data.lenght; i++){
+                        let nombrePais=data[i].name.common;
+                        let opcionSelect=$("<option>").text(nombrePais).val(nombrePais);
+                        $("paises").append(opcionSelect);
+                    }
+
+                },
+                error: function(){
+                    $("#paisesError").text("Error al mostrar paises. Intentelo mas tarde");
+                    $("#paisesError").show();
+
+                }
+            })
         });
         
         
@@ -185,9 +204,10 @@
             </li>
             <br><br>
             <li>
-                <label for="pais">Pais:</label>
-                <input type="text" id="pais" name="pais" value=""> </input>
+                <label for="paises">Pais:</label>
+                <select id="paises"> </select>
             </li>
+            <span class="error" id="paisesError"></span>
             <br><br>
             <li>
                 <label for="usuario">Nombre de usuario:</label>
