@@ -118,13 +118,13 @@
                 url: "https://restcountries.com/v3.1/all",
                 method: "GET",
                 datatype: "json",
-                succes: function(data){
+                success: function(data){
                     $("#paisesError").hide();
 
-                    for (var i=0; i<data.lenght; i++){
+                    for (var i=0; i<data.length; i++){
                         let nombrePais=data[i].name.common;
                         let opcionSelect=$("<option>").text(nombrePais).val(nombrePais);
-                        $("paises").append(opcionSelect);
+                        $("#paises").append(opcionSelect);
                     }
 
                 },
@@ -205,7 +205,9 @@
             <br><br>
             <li>
                 <label for="paises">Pais:</label>
-                <select id="paises"> </select>
+                <select id="paises"> 
+                    <option value="">Seleccione un Pais</option>
+                </select>
             </li>
             <span class="error" id="paisesError"></span>
             <br><br>
