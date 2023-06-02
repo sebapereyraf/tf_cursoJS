@@ -115,6 +115,29 @@
             });
 
             $.ajax({
+                url: "https://apis.datos.gob.ar/georef/api/provincias",
+                method: "GET",
+                datatype: "json",
+                success: function(data){
+                    $("#provinciaError").hide();
+
+                    for (var i=0; i<data.provincias.length; i++){
+                        let nombreProvincia=data.provincias[i].nombre;
+                        let valorProvincia=data.provincias[i].id;
+                        let opcionSelect=$("<option>").text(nombreProvincia).val(valorProvincia);
+                        $("#provincia").append(opcionSelect);
+                        
+                    }
+
+                },
+                error: function(){
+                    $("#provinciaError").text("Error al mostra provincias. Intentelo mas tarde");
+                    $("#provinciaError").show();
+
+                }
+            })
+
+            $.ajax({
                 url: "https://restcountries.com/v3.1/all",
                 method: "GET",
                 datatype: "json",
@@ -200,8 +223,11 @@
             <br><br>
             <li>
                 <label for="provincia">Provincia:</label>
-                <input type="text" id="provincia" name="provincia" value=""> </input>
+                <select id="provincia"> 
+                    <option value="">Seleccione una Provincia</option>
+                </select>
             </li>
+            <span class="error" id="provinciaError"></span>
             <br><br>
             <li>
                 <label for="paises">Pais:</label>
