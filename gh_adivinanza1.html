@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Adivinanzas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        p {
+            color: #666;
+        }
+
+        form {
+            margin-top: 30px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        button[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .resultado {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .reinicio {
+            margin-top: 20px;
+        }
+    </style>
+    
+</head>
+<body>
+    <h1>Juego de Adivinanzas</h1>
+    <p id="instruccionesJuego">Lee atentamente y responde las siguientes adivinanzas!</p>
+
+    <form id="adivinanza1Form">
+        <label for="nombreJugador">Ingresa tu nombre:</label>
+        <input type="text" id="nombreJugador" required>
+
+        <div id="contenedorPreguntas"></div>
+
+        <button type="submit">Verificar respuestas</button>
+    </form>
+
+    <div id="resultado" class="resultado"></div>
+    <button id="botonReiniciar" class="reinicio">Jugar de nuevo</button>
+
+    <script src="jquery-3.7.0.min.js"></script>
+    <script>
+        // Arreglo de objetos para definir cada adivinanza, con opciones a motrar y la respuesta correcta
+        var adivinanzaObjeto = [
+            {
+                pregunta: '¿Cuánto es 2 + 2?',
+                opciones: ['2', '4', '0'],
+                respuesta: '4'
+            },
+            {
+                pregunta: '¿Cuánto es 2 * 3?',
+                opciones: ['2', '3', '6'],
+                respuesta: '6'
+            },
+            {
+                pregunta: '¿De qué color era el caballo blanco de San Martín?',
+                opciones: ['Negro', 'Blanco', 'Bayo'],
+                respuesta: 'Blanco'
+            }
+        ];
+
+        // Funcion para crear las preguntas y las opciones
+
+        $(document).ready(function() {
+            
+            var contenedorPreguntas = $('#contenedorPreguntas');
+
+            adivinanzaObjeto.forEach(function(adivinanza, index) {
+                var preguntaID = 'pregunta' + index;
+
+                var preguntaElemento = $('<label>').attr('for', preguntaID).text(adivinanza.pregunta);
+                contenedorPreguntas.append(preguntaElemento);
+
+                adivinanza.opciones.forEach(function(opcion) {
+                    var checkboxElemento = $('<input>').attr({
+                        type: 'checkbox',
+                        name: preguntaID,
+                        value: opcion
+                    });
+
+                    var labelElement = $('<label>').text(opcion).prepend(checkboxElemento);
+
+                    contenedorPreguntas.append(labelElement, $('<br>'));
+                });
+            });
+
+            // Evento de envío del formulario
+            $('#adivinanza1Form').submit(function(event) {
+                event.preventDefault();
+
+                var nombreJugador = $('#nombreJugador').val();
+
+                var respuestas   = [];
+
+                $('input[type="checkbox"]:checked').each(function() {
+                var opcionSeleccionada = $(this).val();
+                respuestas.push(opcionSeleccionada);
+                });
+
+                console.log(respuestas)
+
+                var respuestasCorrectas = 0;
+
+                
+                function compararRespuestas(respuestas) {
+                    var respuestasCorrectas = 0;
+                    for (var i = 0; i < respuestas.length; i++) {
+                        var respuestaCorrecta = adivinanzaObjeto[i].respuesta;
+                        if (respuestas[i] === respuestaCorrecta) {
+                        respuestasCorrectas++;
+                        }
+                    }
+                    return respuestasCorrectas;
+                }
+
+        var respuestasCorrectas = compararRespuestas(respuestas);
+
+
+                var mensajeResultado= "Usted a dado "+ respuestasCorrectas + " respuestas correctas de un total de " + respuestas.length + " preguntas";
+
+                $('#resultado').text(mensajeResultado);
+                $('#adivinanza1Form').hide();
+                $('#instruccionesJuego').hide();
+                $('#resultado').show();
+                $('#botonReiniciar').show();
+            });
+
+            // Reinicia el juego al hacer clic en el botón "Jugar de nuevo"
+            $('#botonReiniciar').click(function() {
+                $('#adivinanza1Form')[0].reset();
+                $('#instruccionesJuego').show();
+                $('#adivinanza1Form').show();
+                $('#resultado').hide();
+                $('#botonReiniciar').hide();
+            });
+        });
+    </script>
+</body>
+</html>
