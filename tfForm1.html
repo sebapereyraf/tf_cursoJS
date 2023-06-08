@@ -73,6 +73,7 @@
             $("#form1").submit(function(event) {
                 event.preventDefault(); // Evitar envío del formulario
                 
+                let formularioValido = true;
                 
                let msjError="Es necesario completar este dato"
 
@@ -80,7 +81,7 @@
                     $("#nombreError").text(msjError)            //("Es necesario completar este dato");
                     $("#nombreError").show  //.addClass("visible");
                     $("#nombre").addClass("input-vacio");
-
+                    formularioValido = false;
                 } else {
                     $("#nombreError").text("");
                     $("#nombreError").hide  //removeClass("visible");
@@ -91,6 +92,7 @@
                     $("#apellidoError").text(msjError)            //("Es necesario completar este dato");
                     $("#apellidoError").hide  //.addClass("visible");
                     $("#apellido").addClass("input-vacio");
+                    formularioValido = false;
 
                 } else {
                     $("#apellidoError").text("");
@@ -102,6 +104,7 @@
                     $("#emailError").text(msjError)            //("Es necesario completar este dato");
                     $("#emailError").hide  //.addClass("visible");
                     $("#email").addClass("input-vacio");
+                    formularioValido = false;
 
                 } else {
                     $("#emailError").text("");
@@ -113,6 +116,7 @@
                     $("#usuarioError").text(msjError)            //("Es necesario completar este dato");
                     $("#usuarioError").hide  //.addClass("visible");
                     $("#usuario").addClass("input-vacio");
+                    formularioValido = false;
 
                 } else {
                     $("#usuarioError").text("");
@@ -124,6 +128,7 @@
                     $("#passwordError").text(msjError)            //("Es necesario completar este dato");
                     $("#passwordError").hide  //.addClass("visible");
                     $("#password").addClass("input-vacio");
+                    formularioValido = false;
 
                 } else {
                     $("#passwordError").text("");
@@ -135,6 +140,7 @@
                     $("#password2Error").text(msjError)            //("Es necesario completar este dato");
                     $("#password2Error").hide  //.addClass("visible");
                     $("#password2").addClass("input-vacio");
+                    formularioValido = false;
 
                 } else {
                     $("#password2Error").text("");
@@ -147,6 +153,7 @@
                     $("#emailError2").text("Se requiere un email válido");
                     $("#emailError2").show();
                     $("#email").addClass("input-vacio");
+                    formularioValido = false;
                 } else {
                     $("#emailError2").text("");
                     $("#emailError2").hide();
@@ -157,11 +164,14 @@
                     $("#password2Error2").text("Las contraseñas no coinciden");
                     $("#password2Error2").show();
                     $("#password2").addClass("input-vacio");
+                    formularioValido = false;
                 } else {
                     $("#password2Error2").text("");
                     $("#password2Error2").hide();
                     $("#password2").removeClass("input-vacio");
                 }
+
+                if (formularioValido) {
                 const dataUsuario ={
                     nombre: $("#nombre").val(),
                     apellido: $("#apellido").val(),
@@ -170,6 +180,7 @@
                 localStorage.setItem("dataUsuario", JSON.stringify(dataUsuario));
                 const dataUsuarioGuardado=JSON.parse(localStorage.getItem("dataUsuario"));
                 console.log(dataUsuarioGuardado.usuario); 
+                }
 
             });
 
