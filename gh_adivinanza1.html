@@ -30,7 +30,7 @@
             margin-bottom: 10px;
         }
 
-        input[type="checkbox"] {
+        input[type="radio"] {
             margin-right: 5px;
         }
 
@@ -104,13 +104,13 @@
                 contenedorPreguntas.append(preguntaElemento);
 
                 adivinanza.opciones.forEach(function(opcion) {
-                    var checkboxElemento = $('<input>').attr({
-                        type: 'checkbox',
+                    var radioElemento = $('<input>').attr({
+                        type: 'radio',
                         name: preguntaID,
                         value: opcion
                     });
 
-                    var labelElement = $('<label>').text(opcion).prepend(checkboxElemento);
+                    var labelElement = $('<label>').text(opcion).prepend(radioElemento);
 
                     contenedorPreguntas.append(labelElement, $('<br>'));
                 });
@@ -124,7 +124,7 @@
 
                 var respuestas   = [];
 
-                $('input[type="checkbox"]:checked').each(function() {
+                $('input[type="radio"]:checked').each(function() {
                 var opcionSeleccionada = $(this).val();
                 respuestas.push(opcionSeleccionada);
                 });
