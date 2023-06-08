@@ -162,6 +162,14 @@
                     $("#password2Error2").hide();
                     $("#password2").removeClass("input-vacio");
                 }
+                const dataUsuario ={
+                    nombre: $("#nombre").val(),
+                    apellido: $("#apellido").val(),
+                    usuario: $("#usuario").val(),
+                } ;
+                localStorage.setItem("dataUsuario", JSON.stringify(dataUsuario));
+                const dataUsuarioGuardado=JSON.parse(localStorage.getItem("dataUsuario"));
+                console.log(dataUsuarioGuardado.usuario); 
 
             });
 
