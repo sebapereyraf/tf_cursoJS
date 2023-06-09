@@ -137,7 +137,9 @@
 
                 var respuestas   = [];
 
-                $('input[type="radio"]:checked').each(function() {
+                var usuarioRespuestas = $('input[type="radio"]:checked');
+
+                usuarioRespuestas.each(function() {
                 var opcionSeleccionada = $(this).val();
                 respuestas.push(opcionSeleccionada);
                 });
