@@ -103,18 +103,27 @@
                 var preguntaElemento = $('<label>').attr('for', preguntaID).text(adivinanza.pregunta);
                 contenedorPreguntas.append(preguntaElemento);
 
+                //console.log(adivinanza.pregunta);
+
                 adivinanza.opciones.forEach(function(opcion) {
                     var radioElemento = $('<input>').attr({
                         type: 'radio',
                         name: preguntaID,
-                        value: opcion
+                        value: opcion,
+                        required: true,
                     });
 
                     var labelElement = $('<label>').text(opcion).prepend(radioElemento);
 
                     contenedorPreguntas.append(labelElement, $('<br>'));
+
+                    //console.log(opcion);        
+
                 });
+                
             });
+
+            console.log($('#contenedorPreguntas input'));
 
             // Evento de envío del formulario
             $('#adivinanza1Form').submit(function(event) {
