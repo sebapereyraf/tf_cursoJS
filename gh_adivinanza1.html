@@ -95,20 +95,24 @@
 
         $(document).ready(function() {
             
-            var contenedorPreguntas = $('#contenedorPreguntas');
-
-            adivinanzaObjeto.forEach(function(adivinanza, index) {
-                var preguntaID = 'pregunta' + index;
-
-                var preguntaElemento = $('<label>').attr('for', preguntaID).text(adivinanza.pregunta);
+            
+            adivinanzaObjeto.forEach(function(adivinanza, i) {
+                
+                var contenedorPreguntas = $('#contenedorPreguntas');
+                //var preguntaID = 'pregunta' + index;
+                var pregunta = adivinanzaObjeto[i].pregunta;
+                var opciones = adivinanzaObjeto[i].opciones;
+                
+                
+                var preguntaElemento = $('<label>').text(pregunta);
                 contenedorPreguntas.append(preguntaElemento);
 
                 //console.log(adivinanza.pregunta);
 
-                adivinanza.opciones.forEach(function(opcion) {
+                opciones.forEach(function(opcion) {
                     var radioElemento = $('<input>').attr({
                         type: 'radio',
-                        name: preguntaID,
+                        name: 'pregunta'+ i,
                         value: opcion,
                         required: true,
                     });
@@ -140,7 +144,7 @@
 
                 console.log(respuestas)
 
-                var respuestasCorrectas = 0;
+                //var respuestasCorrectas = 0;
 
                 
                 function compararRespuestas(respuestas) {
