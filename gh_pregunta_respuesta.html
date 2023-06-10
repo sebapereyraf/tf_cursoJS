@@ -97,6 +97,7 @@
         $(document).ready(function() {
             var contenedorPreguntas = $('#contenedorPreguntas');
             var indicePregunta = 0;
+            var respuestasGuardadas = [];
 
             function mostrarSiguiente() {
                 contenedorPreguntas.empty();
@@ -119,6 +120,17 @@
                         var labelElement = $('<label>').text(opcion).prepend(radioElemento);
 
                         contenedorPreguntas.append(labelElement, $('<br>'));
+
+                        radioElemento.change(function() {
+                        var preguntaIndex = indicePregunta - 1;    
+                        respuestasGuardadas[preguntaIndex] = $(this).val();
+                        // cuando la pagina se carga por 1ra vez ya el indicePregunta cambia de 0 a 1,
+                        //y la funcion change me va a detectar cual de los inputs radio modifico su condicion,
+                        //guardando el valor de ese input que se modifico en la posicion indicePregunta-1,
+                        // es decir por ej, cuando la pagina se cargo por primera vez sera en la posicion cero.
+                        // De esta manera el input elegido queda guardado en la misma posicion que la pregunta 
+                        // que comparare con la funcion comparar respuesta (los array quedan alineados!)
+                         });
                     });
 
                     indicePregunta++;
@@ -152,19 +164,20 @@
 
                 var nombreJugador = $('#nombreJugador').val();
 
-                var respuestas   = [];
+                //var respuestas   = [];
 
-                var usuarioRespuestas = $('input[type="radio"]:checked');
+                //var usuarioRespuestas = $('input[type="radio"]:checked');
 
-                usuarioRespuestas.each(function() {
-                var opcionSeleccionada = $(this).val();
-                respuestas.push(opcionSeleccionada);
-                });
+                //usuarioRespuestas.each(function() {
+                //var opcionSeleccionada = $(this).val();
+                //respuestas.push(opcionSeleccionada);
+                //});
 
                 console.log(respuestas)
 
                 //var respuestasCorrectas = 0;
 
+                var respuestas=respuestasGuardadas
                 
                 function compararRespuestas(respuestas) {
                     var respuestasCorrectas = 0;
