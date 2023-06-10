@@ -34,8 +34,17 @@
             margin-right: 5px;
         }
 
-        button[type="submit"] {
+        button {
             background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button[class="control"] {
+            background-color: #4d48ec;
             color: #fff;
             border: none;
             padding: 10px 20px;
@@ -65,12 +74,13 @@
         <div id="contenedorPreguntas"></div>
 
         <button type="submit">Verificar respuestas</button>
-        <button id="botonSiguiente">Siguiente</button>
+        <button id="botonSiguiente"  class="control">Siguiente</button>
     </form>
 
     <div id="resultado" class="resultado"></div>
     <button id="botonReiniciar" class="reinicio">Jugar de nuevo</button>
-    
+    <button id="paginaInicio" class="control">Volver a pagina Principal</button>
+
     <script src="jquery-3.7.0.min.js"></script>
     <script>
         // Arreglo de objetos para definir cada adivinanza, con opciones a motrar y la respuesta correcta
