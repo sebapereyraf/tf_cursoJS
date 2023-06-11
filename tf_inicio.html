@@ -4,10 +4,80 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pagina Principal Juegos</title>
     <script src="jquery-3.7.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        p {
+            color: #666;
+        }
+
+        form {
+            margin-top: 30px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button[class="control"] {
+            background-color: #4d48ec;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .resultado {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .reinicio {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <button id="usuarioRegistrado" class="registro">Regístrese</button>
+    </header>
+
+    <div id="descripcion">
+        <p id="bienvenida">Bienvenidos a este sitio de TRIVIAS. Para jugar, debe registrarse previamente</p>
+        <p id="txtUsuarioRegistrado">Ya se encuentra registrado en el sitio de TRIVIAS, por favor elija uno de los siguientes juegos:</p>
+    </div>
+
+    <div id="divBotones">
+        <button id="adivinanzasBoton" class="botonJuego">ADIVINANZAS</button>
+        <button id="preguntasRespuestasBoton" class="botonJuego">PREGUNTAS Y RESPUESTAS</button>
+    </div>
     <ul>
         <li><a href="tfForm1.html">Datos Basicos</a></li>
         

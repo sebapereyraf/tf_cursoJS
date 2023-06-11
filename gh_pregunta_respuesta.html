@@ -105,6 +105,11 @@
         // Funcion para crear las preguntas y las opciones
 
         $(document).ready(function() {
+            const dataUsuarioGuardado=JSON.parse(localStorage.getItem("dataUsuario"));
+            if (dataUsuarioGuardado) {
+                $('#nombreJugador').val(dataUsuarioGuardado.nombre);
+            }
+
             var contenedorPreguntas = $('#contenedorPreguntas');
             var indicePregunta = 0;
             var respuestasGuardadas = [];
@@ -223,7 +228,15 @@
                 $('#botonSiguiente').show();
                 mostrarSiguiente();
             });
-        }); 
+            //Funcion para volver a la pagina principal con boton paginaInicio
+            $('#paginaInicio').click(function(){
+                $(location).attr('href', './tf_inicio.html');
+            });
+            
+            
+        });
+        
+        
     </script>
 </body>
 </html>
