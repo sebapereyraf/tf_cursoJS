@@ -60,10 +60,47 @@
         .reinicio {
             margin-top: 20px;
         }
+
+        header {
+            background-color: #333;
+            padding: 10px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        #usuarioRegistrado {
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        #cerrarSesion {
+            margin-left: 10px;
+            width: 25px;
+            height: 25px;
+            background-color: #131212;
+            border: 1px solid #ffffff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .registro {
+            background-color: #4d48ec;
+            color: #fff;
+            font-size: 24px;
+        }
+
+
+
     </style>
     
 </head>
 <body>
+    <header>
+        <button id="usuarioRegistrado" class="registro"></button>
+    </header>
+
     <h1>Juego de Adivinanzas</h1>
     <p id="instruccionesJuego">Lee atentamente y responde las siguientes adivinanzas!</p>
 
@@ -105,10 +142,25 @@
         // Funcion para crear las preguntas y las opciones
 
         $(document).ready(function() {
-            const dataUsuarioGuardado=JSON.parse(localStorage.getItem("dataUsuario"));
+            
+            const dataUsuarioGuardado = JSON.parse(localStorage.getItem("dataUsuario"));
+            $('#usuarioRegistrado').text(dataUsuarioGuardado.usuario);
+            $('#usuarioRegistrado').append('<div id="cerrarSesion">X</div>');
+
+            // Evento clic para cerrar sesión
+            $('#cerrarSesion').click(function() {
+                localStorage.removeItem("dataUsuario")
+                alert('Sesión cerrada');
+                $(location).attr('href', './tf_inicio.html'); // que se redireccione a la pagina inicial
+            })
+
+            
+            //const dataUsuarioGuardado=JSON.parse(localStorage.getItem("dataUsuario"));
             if (dataUsuarioGuardado) {
                 $('#nombreJugador').val(dataUsuarioGuardado.nombre);
             }
+
+            
 
             var contenedorPreguntas = $('#contenedorPreguntas');
             var indicePregunta = 0;
