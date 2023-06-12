@@ -61,8 +61,16 @@
       padding: 10px 20px;
       border-radius: 3px;
       cursor: pointer;
-      
-    }
+      }
+
+    button[class="control"] {
+        background-color: #4d48ec;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 3px;
+        cursor: pointer;
+        }
 
                 
     </style>
@@ -176,12 +184,14 @@
                     nombre: $("#nombre").val(),
                     apellido: $("#apellido").val(),
                     usuario: $("#usuario").val(),
-                } ;
+                } 
                 localStorage.setItem("dataUsuario", JSON.stringify(dataUsuario));
                 const dataUsuarioGuardado=JSON.parse(localStorage.getItem("dataUsuario"));
                 console.log(dataUsuarioGuardado.usuario); 
-                }
 
+                $(location).attr('href', './tf_inicio.html'); // que se redireccione a la pagina inicial
+                }
+                
             });
 
             $.ajax({
@@ -227,6 +237,9 @@
 
                 }
             })
+            $('#paginaInicio').click(function(){
+                $(location).attr('href', './tf_inicio.html');
+            });
         });
         
         
@@ -330,10 +343,8 @@
             <br>
             <class="button">
                 <button type="submit">Envíe formulario</button>
-                        
-            
-            
         </ul>
+        <button id="paginaInicio" class="control">Volver a pagina Principal</button>
         
       
     </form>
