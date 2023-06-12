@@ -177,6 +177,7 @@
             $('#cerrarSesion').click(function() {
                 localStorage.removeItem("dataUsuario")
                 alert('Sesión cerrada');
+                $(location).attr('href', './tf_inicio.html'); // que se redireccione a la pagina inicial
             });
 
             if (dataUsuarioGuardado) {
