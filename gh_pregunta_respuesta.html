@@ -105,8 +105,10 @@
     <p id="instruccionesJuego">Lee atentamente y responde las siguientes adivinanzas!</p>
 
     <form id="adivinanza1Form">
+
+        <!--
         <label for="nombreJugador">Ingresa tu nombre:</label>
-        <input type="text" id="nombreJugador" required>
+        <input type="text" id="nombreJugador" required> -->
 
         <div id="contenedorPreguntas"></div>
 
@@ -138,6 +140,10 @@
                 respuesta: 'Blanco'
             }
         ];
+
+        /*Pendientes: desarrollar funcion para que el usuario disponga cuantas preguntas quiere responder y generar un nuevo arreglo de objetos que
+        // contenga tantos objetos como preguntas seleccionadas por el usuario, pero que las obtenga aleatoriamiente de un gran arreglo. */
+        
 
         // Funcion para crear las preguntas y las opciones
 
@@ -260,7 +266,7 @@
         var respuestasCorrectas = compararRespuestas(respuestas);
 
 
-                var mensajeResultado= "Usted a dado "+ respuestasCorrectas + " respuestas correctas de un total de " + respuestas.length + " preguntas";
+                var mensajeResultado= dataUsuarioGuardado.usuario + ", Usted a dado "+ respuestasCorrectas + " respuestas correctas de un total de " + respuestas.length + " preguntas";
 
                 $('#resultado').text(mensajeResultado);
                 $('#adivinanza1Form').hide();

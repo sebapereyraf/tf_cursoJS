@@ -104,8 +104,9 @@
     <p id="instruccionesJuego">Lee atentamente y responde las siguientes adivinanzas!</p>
 
     <form id="adivinanza1Form">
+        <!--
         <label for="nombreJugador">Ingresa tu nombre:</label>
-        <input type="text" id="nombreJugador" required>
+        <input type="text" id="nombreJugador" required>  -->
 
         <div id="contenedorPreguntas"></div>
 
@@ -176,7 +177,8 @@
 
                     var labelElement = $('<label>').text(opcion).prepend(radioElemento);
 
-                    contenedorPreguntas.append(labelElement, $('<br>'));
+                    //contenedorPreguntas.append(labelElement, $('<br>'));
+                    contenedorPreguntas.append(labelElement);
 
                     //console.log(opcion);        
 
@@ -220,7 +222,7 @@
         var respuestasCorrectas = compararRespuestas(respuestas);
 
 
-                var mensajeResultado= "Usted a dado "+ respuestasCorrectas + " respuestas correctas de un total de " + respuestas.length + " preguntas";
+                var mensajeResultado= dataUsuarioGuardado.usuario+", Usted a dado "+ respuestasCorrectas + " respuestas correctas de un total de " + respuestas.length + " preguntas";
 
                 $('#resultado').text(mensajeResultado);
                 $('#adivinanza1Form').hide();
